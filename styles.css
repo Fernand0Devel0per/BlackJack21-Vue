@@ -1,0 +1,116 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Jost', sans-serif;
+}
+
+body {
+  margin: 0 auto;
+  width: 490px;
+}
+main{
+  border: 10px solid #3d1b99;
+  height: 635px;
+}
+
+header {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  margin: 1.5rem;
+  border-radius: 10px;
+  padding: 1rem;
+  background-color: #3d1b99;
+  color: white;
+  text-align: center;
+}
+
+#assignment {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  margin: 3rem;
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+}
+
+h2 {
+  font-size: 2rem;
+  border-bottom: 4px solid #ccc;
+  color: #3d1b99;
+  margin: 0 0 1rem 0;
+}
+
+.box-player .player, .resultado {
+  font-size: 1.25rem;
+  font-weight: bold;
+  background-color: #3d1b99;
+  padding: 0.5rem;
+  color: white;
+  border-radius: 25px;
+  
+}
+.player{
+  width: 150px;
+}
+
+.player{
+  margin: 0 10px;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: 1px solid #00c3ff;
+  background-color: #00c3ff;
+  color: white;
+  padding: 0.05rem 1rem;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.26);
+  margin:  0 1rem;
+}
+
+#assignment button:hover,
+#assignment button:active {
+  background-color: #3d1b99;
+  border-color: #3d1b99;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
+}
+
+#assignment input:focus {
+  background-color: #624e9b;
+  border-color: #624e9b;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
+}
+
+.box-players{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.total{
+  font-size: 1.25rem;
+  font-weight: bold;
+  background-color: #3d1b99;
+  padding: 0.2rem;
+  color: white;
+  margin: 25px;
+}
+
+.card{
+  width: 42px;
+  height: 84px;
+  margin-bottom: 20px;
+  background-image: src('./cards/3-espada.png');
+}
+
+.card:hover{
+  box-shadow: 3px 2px #3d1b99;
+  border: 1px solid #00c3ff;
+}
+
+.invisible{
+  visibility: hidden;
+}
+
+
+

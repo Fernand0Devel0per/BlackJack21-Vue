@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+    href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+    rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer>
+    </script>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Black Jack 21</h1>
+      </header>
+      <section id="assignment">
+        <div class="box-players">
+          <div class="box-player"  >
+            <img class="card" :src="playerOne.lastCard" >
+            <input class="player" 
+                   placeholder="Player 1"
+                   maxlength="10"
+                   type="text"
+                   v-model="playerOne.name"></input>
+            <p class="total">Total: {{totalPlayerOne}}</p>
+            <button @click="nextCard">Next Card</button>
+          </div>
+          <div class="box-player">
+            <img class="card" :src="playerTwo.lastCard" >
+            <input class="player" 
+                   placeholder="Player 2"
+                   maxlength="10"
+                   type="text"
+                   v-model="playerTwo.name"></input>
+            <p class="total">Total: {{totalPlayerTwo}}</p>
+            <button @click="stop">Stop</button>
+          </div>  
+        </div>
+        <p class="resultado"
+           :class="{invisible: isHidden}">{{winner}}</p>
+       
+      </section>
+    </main>
+  
+  </body>
+</html>

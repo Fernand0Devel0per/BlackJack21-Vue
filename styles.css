@@ -57,21 +57,33 @@ h2 {
   margin: 0 10px;
 }
 
-button {
-  font: inherit;
+.isAble{
   cursor: pointer;
   border: 1px solid #00c3ff;
   background-color: #00c3ff;
+}
+
+.isDisable{
+  border: 1px solid #7da2ad;
+  background-color: #7da2ad;
+}
+
+button {
+  font: inherit;
   color: white;
   padding: 0.05rem 1rem;
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.26);
   margin:  0 1rem;
 }
 
-#assignment button:hover,
-#assignment button:active {
+.isAble:hover,
+.isAble:active 
+{
   background-color: #3d1b99;
   border-color: #3d1b99;
+}
+button:hover,
+button:active {
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
 }
 
@@ -110,6 +122,16 @@ button {
 
 .invisible{
   visibility: hidden;
+}
+.containerResetButton{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.resetButton{
+  padding: 12px;
 }
 
 

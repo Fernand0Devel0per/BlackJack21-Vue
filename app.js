@@ -1,21 +1,14 @@
 const App = Vue.createApp({
     data(){
         return{
-            deck: this.mountDeck(),
+            deck: [],
             isplayerOneTurn: true,
-            playerOne: {
-                total: 0,
-                name:'',
-                lastCard:''
-            },
-            playerTwo: {
-                total: 0,
-                name:'',
-                lastCard:''
-            },
+            playerOne: {},
+            playerTwo: {},
             revealResult: false,
             isHidden: true,
-            winner: ''
+            winner: '',
+            endGame: false
         }
     },
     computed:{
@@ -24,11 +17,13 @@ const App = Vue.createApp({
        },
        totalPlayerTwo(){
         return this.playerTwo.total;
-       }
-        
+       },
+       stateButton(){
+        return (this.endGame) ?  'isDisable' : 'isAble'
+       }    
     },
     mounted() {
-        this.shuffleArray(this.deck);
+        this.mountNewGame();
     },
     methods: {
         stop(){
@@ -52,10 +47,11 @@ const App = Vue.createApp({
             if(this.explode(player.total))
             {
                 this.declareWinner(`The winner is ${this.returnThewinner(player)}`);
+                this.endGame = true;
             }
         },
         returnThewinner(player){
-            return (player == this.playerOne) ? this.playerTwo.name : this.playerOne.name;
+            return (player == this.playerOne) ? this.IsNameValid(this.playerTwo) : this.IsNameValid(this.playerOne);
         },
         explode(total){
             return total > 21
@@ -64,7 +60,7 @@ const App = Vue.createApp({
             return Math.floor(Math.random() * (max - min + 1)) + min;
         },
         drawCard(){
-            let drawNumber = this.raffleNumber(0, this.deck.lenght);
+            let drawNumber = this.raffleNumber(0, (this.deck.lenght -1));
             let card;
             [card] = this.deck.splice(drawNumber, 1);
             return card;
@@ -78,16 +74,44 @@ const App = Vue.createApp({
         },
         checkWinner(playerOne, playerTwo){
             if (playerOne.total > playerTwo.total) {
-                this.declareWinner(`The winner is ${playerOne.name}`);
+                this.declareWinner(`The winner is ${this.IsNameValid(playerOne)}`);
             }else if(playerTwo.total > playerOne.total){
-                this.declareWinner(`The winner is ${playerTwo.name}`);
+                this.declareWinner(`The winner is ${this.IsNameValid(playerTwo)}`);
             }else{
                 this.declareWinner('Draw Game');
+            }
+            this.endGame = true;
+        },
+        IsNameValid(player){
+            if (player === this.playerOne) {
+                return player.name === "" ? "Player 1" : player.name
+            }else {
+                return player.name === "" ? "Player 2" : player.name
             }
         },
         declareWinner(winner){
             this.winner = winner
             this.isHidden = false;
+        },
+        mountPlayer(){
+            return {
+                total: 0,
+                name:'',
+                lastCard:'./cards/startCard.png'
+            }
+        },
+        resetGame(){
+            this.revealResult = false,
+            this.isHidden = true,
+            this.winner = '',
+            this.endGame = false
+            this.mountNewGame();
+        },
+        mountNewGame(){
+            this.playerOne = this.mountPlayer();
+            this.playerTwo = this.mountPlayer();
+            this.deck = this.mountDeck();
+            this.shuffleArray(this.deck);
         },
         mountDeck(){
             return [

@@ -28,7 +28,9 @@
                    type="text"
                    v-model="playerOne.name"></input>
             <p class="total">Total: {{totalPlayerOne}}</p>
-            <button @click="nextCard">Next Card</button>
+            <button :disabled="endGame" 
+                    :class="stateButton"
+                    @click="nextCard">Next Card</button>
           </div>
           <div class="box-player">
             <img class="card" :src="playerTwo.lastCard" >
@@ -38,13 +40,19 @@
                    type="text"
                    v-model="playerTwo.name"></input>
             <p class="total">Total: {{totalPlayerTwo}}</p>
-            <button @click="stop">Stop</button>
+            <button :disabled="endGame"
+                    @click="stop"
+                    :class="stateButton">Stop</button>
           </div>  
         </div>
         <p class="resultado"
            :class="{invisible: isHidden}">{{winner}}</p>
-       
+           <div class="containerResetButton">
+            <button  class="resetButton isAble" 
+                    @click="resetGame">Reset</button>
+          </div>
       </section>
+      
     </main>
   
   </body>
